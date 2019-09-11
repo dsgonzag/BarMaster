@@ -1,7 +1,7 @@
 var oTable = $('#grid-1').DataTable(
 {
     "ajax": {
-            "url": "/administrator/alimentos/table",
+            "url": "/administrator/puntajes/table",
             "dataSrc": ""
     },
     "columnDefs": [
@@ -18,11 +18,13 @@ var oTable = $('#grid-1').DataTable(
 
                     },
                     { "data": "id" },
-                    { "data": "categoria" },
-                    { "data": "name" },
-                    { "data": "puntos" }
-                    ,{"data": "fechaelaboracion"}
-                    //AQUI SE PONEN LAS COLUMNAS QUE DESEA QUE APAREZCA 
+                    { "data": "fecha" },
+                    { "data": "puntaje" },
+                    { "data": "nivel" },  
+                    { "data": "id_usuario" }
+
+                   
+                    //AQUI SE PONEN LAS COLUMNAS QUE DESEA QUE APAREZCA ,{"data": "fechaelaboracion"}
                    
                 ],
     "oLanguage" : {

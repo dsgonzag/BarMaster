@@ -431,5 +431,270 @@ router.post('/alimentos/delete', function(req, res, next) {
     
   
 });
+
+
+//API REST PARA CATEGORIAS
+router.get('/categorias/getall', function(req, res, next) {
+  var db = req.app.get('db');
+      const text = "select * from tbl_categorias;"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } 
+          res.status(200).json(result.rows);
+        
+      });
+   
+});
+
+router.post('/categorias/getbyid', function(req, res, next) {
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      const text = "select * from tbl_categorias where id="+registro.txt_id+";"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro consultado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+    
+  
+});
+
+router.post('/categorias/insert', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      var text = "";
+      var values = [];
+
+     
+        text = "select * from func_insert_categorias($1, $2, $3, $4, $5);"
+        values = [
+                        registro.txt_nombre,
+                        registro.txt_puntos,
+                        registro.txt_sonido,
+                        registro.txt_categoria,
+                        registro.txt_imagen,
+                      ];
+  
+      
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("error "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro guardado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
+router.post('/categorias/update', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      var text = "";
+      var values = [];
+
+        text = "select * from func_update_categorias($1, $2, $3, $4, $5, $6);"
+        values = [
+                        registro.txt_nombre,
+                        registro.txt_puntos,
+                        registro.txt_sonido,
+                        registro.txt_categoria,
+                        registro.txt_imagen,
+                        registro.txt_id
+                      ];
+      
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("error "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro actualizado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
+router.post('/categorias/delete', function(req, res, next) {
+  var db = req.app.get('db');
+  var registro = req.body;
+
+        const text = "select * from func_remove_categorias($1);"
+        const values = [
+                        registro.txt_id
+                      ];
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro eliminado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
+
+//API REST PARA PUNTAJES
+router.get('/puntajes/getall', function(req, res, next) {
+  var db = req.app.get('db');
+      const text = "select * from tbl_puntajes;"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } 
+          res.status(200).json(result.rows);
+        
+      });
+   
+});
+
+router.post('/puntajes/getbyid', function(req, res, next) {
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      const text = "select * from tbl_puntajes where id="+registro.txt_id+";"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro consultado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+    
+  
+});
+
+router.post('/puntajes/insert', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      var text = "";
+      var values = [];
+
+     
+        text = "select * from func_insert_puntajes($1, $2, $3, $4, $5);"
+        values = [
+                        registro.txt_nombre,
+                        registro.txt_puntos,
+                        registro.txt_sonido,
+                        registro.txt_categoria,
+                        registro.txt_imagen,
+                      ];
+  
+      
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("error "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro guardado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
+router.post('/puntajes/update', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+      var text = "";
+      var values = [];
+
+        text = "select * from func_update_puntajes($1, $2, $3, $4, $5, $6);"
+        values = [
+                        registro.txt_nombre,
+                        registro.txt_puntos,
+                        registro.txt_sonido,
+                        registro.txt_categoria,
+                        registro.txt_imagen,
+                        registro.txt_id
+                      ];
+      
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("error "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro actualizado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
+router.post('/puntajes/delete', function(req, res, next) {
+  var db = req.app.get('db');
+  var registro = req.body;
+
+        const text = "select * from func_remove_puntajes($1);"
+        const values = [
+                        registro.txt_id
+                      ];
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro eliminado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }
+        }
+      });
+});
+
 module.exports = router;
 

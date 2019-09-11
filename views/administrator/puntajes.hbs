@@ -24,7 +24,6 @@
       <div class="col-md-4">
         <p>
           <a href="/administrator/">Usuarios </a>
-          {{!-- <a href="/administrator/Test">Test </a> --}}
           <a href="/administrator/categorias">Categorias </a>
           <a href="/administrator/alimentos">Alimentos </a>
           <a href="/administrator/puntajes">Puntajes </a>
@@ -41,8 +40,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-md-12 space20">
-                  
-                  <a data-toggle="modal" class="btn btn-dark" role="button" href="#myModal1" onClick="limpiar_form();"><i class="clip-user-5"></i>
+                  <a data-toggle="modal" class="btn btn-orange" role="button" href="#myModal1" onClick="limpiar_form();"><i class="clip-user-5"></i>
                       Registrar
                   </a>
               </div>
@@ -79,24 +77,32 @@
                                                           </div>
                                                       </div>
                                                   </div>
+                                               
                                                   <div class="form-group">
                                                       <label class="control-label">
-                                                          Nombre: <span class="symbol required"></span>
+                                                          Fecha: <span class="symbol required"></span>
                                                       </label>
-                                                      <input type="text" class="form-control" id="txt_nombre" name="txt_nombre">
+                                                      <input type="date" class="form-control" id="txt_fecha" name="txt_fecha">
                                                   </div>
                                                   <div class="form-group">
                                                       <label class="control-label">
-                                                          Email: <span class="symbol required"></span>
+                                                          Puntaje: <span class="symbol required"></span>
                                                       </label>
-                                                      <input type="text" class="form-control" id="txt_email" name="txt_email">
+                                                      <input type="text" class="form-control" id="txt_puntaje" name="txt_puntaje">
                                                   </div>
                                                   <div class="form-group">
                                                       <label class="control-label">
-                                                          Password: <span class="symbol required"></span>
+                                                          Nivel: <span class="symbol required"></span>
                                                       </label>
-                                                      <input type="password" class="form-control" id="txt_pass" name="txt_pass">
+                                                      <input type="text" class="form-control" id="txt_nivel" name="txt_nivel">
                                                   </div>
+                                                 {{!--  <div class="form-group">
+                                                      <label class="control-label">
+                                                          IdUsuario: <span class="symbol required"></span>
+                                                      </label>
+                                                      <input type="text" class="form-control" id="txt_id_usuario" name="txt_id_usuario">
+                                                  </div> --}}
+                                                  
                                               </div>
                                           </div>
 
@@ -139,8 +145,11 @@
                 <tr>
                   <th></th>
                   <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Email</th>
+                  <th>Fecha</th>
+                  <th>Puntaje</th>
+                  <th>Nivel</th>
+                  <th>IdUsuario</th>
+                  
                 </tr>
               </thead>
             </table>
@@ -156,9 +165,9 @@
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/DataTables/media/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/DataTables/media/js/DT_bootstrap.js"></script>
-<script type="text/javascript" src="../functions/users/grids.js"></script>
-<script type="text/javascript" src="../functions/users/funciones.js"></script>
-<script type="text/javascript" src="../functions/users/validations.js"></script>
+<script type="text/javascript" src="../functions/puntajes/grids.js"></script>
+<script type="text/javascript" src="../functions/puntajes/funciones.js"></script>
+<script type="text/javascript" src="../functions/puntajes/validations.js"></script>
 <script>
     jQuery(document).ready(function () {
         TableExport.init();

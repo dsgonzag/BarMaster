@@ -94,6 +94,22 @@ router.get('/Test', function(req, res, next) {
   }
 });
 
+router.get('/categorias', function(req, res, next) {
+  if (!req.session.autenticado) {
+    res.render('administrator/login');
+  }else{
+    res.render('administrator/categorias', { username: req.session.usuario });
+  }
+});
+
+router.get('/puntajes', function(req, res, next) {
+  if (!req.session.autenticado) {
+    res.render('administrator/login');
+  }else{
+    res.render('administrator/puntajes', { username: req.session.usuario });
+  }
+});
+
 
 
 //RUTAS MANTENIMIENTO TEST
@@ -101,6 +117,11 @@ router.get('/Test/table', function(req, res, next) {
   var autenticado = req.session.autenticado;
   var db = req.app.get('db');
 
+  /* var today = new Date();
+  var fecha = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  console.log(fecha);
+  const text = "select * from tbl_categorias where fechaCaducidad>="+fecha+";"
+ */
   if (autenticado) {
       const text = "select * from tbl_categorias;"
       const values = [];
@@ -566,4 +587,326 @@ router.post('/alimentos/remove', function(req, res, next) {
   }
 });
 
+//rutas mantenimiento de puntajes
+router.get('/puntajes/table', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+
+  if (autenticado) {
+      const text = "select * from tbl_puntajes;"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          res.status(200).json(result.rows);
+          console.log(result.rows);
+        }
+      });
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/puntajes/read', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+      const text = "select * from tbl_puntajes where id="+registro.txt_id+";"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro consultado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/puntajes/store', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+      var text = "";
+      var values = [];
+
+      if(registro.txt_id==""){
+        text = "select * from func_insert_puntajes($1, $2, $3, $4);"
+        values = [
+                        registro.txt_fecha,
+                        registro.txt_puntajes,
+                        registro.txt_nivel,
+                        registro.txt_id_usuario
+
+                        
+                      ];
+                      
+      }else{
+        
+        text = "select * from func_update_puntajes($1, $2, $3, $4, $5);"
+        values = [
+                        registro.txt_fecha,
+                        registro.txt_puntajes,
+                        registro.txt_nivel,
+                        registro.txt_id_usuario,
+                        
+                        registro.txt_id
+                      ];
+                      console.log("valores a actualizar: " + values);
+      }
+
+      // callback
+
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("errror "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro guardado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/puntajes/remove', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+        const text = "select * from func_remove_puntajes($1);"
+        const values = [
+                        registro.txt_id
+                      ];
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro eliminado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+//rutas mantenimiento de categorias
+router.get('/categorias/table', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+
+  if (autenticado) {
+      const text = "select * from tbl_categorias;"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          res.status(200).json(result.rows);
+          console.log(result.rows);
+        }
+      });
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/categorias/read', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+      const text = "select * from tbl_categorias where id="+registro.txt_id+";"
+      const values = [];
+
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro consultado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/categorias/store', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+      var text = "";
+      var values = [];
+
+      if(registro.txt_id==""){
+        text = "select * from func_insert_categorias($1, $2);"
+        values = [
+                        registro.txt_descripcion,
+                        registro.txt_fechaCreacion
+                        
+                      ];
+                      
+      }else{
+        
+        text = "select * from func_update_categorias($1, $2, $3);"
+        values = [
+                        registro.txt_descripcion,
+                        registro.txt_fechaCreacion,
+                        
+                        registro.txt_id
+                      ];
+                      console.log("valores a actualizar: " + values);
+      }
+
+      // callback
+
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log("errror "+err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro guardado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
+
+router.post('/categorias/remove', function(req, res, next) {
+  var autenticado = req.session.autenticado;
+  var db = req.app.get('db');
+  var registro = req.body;
+
+  if (autenticado) {
+    if (validaRegistro(registro)){
+        const text = "select * from func_remove_categorias($1);"
+        const values = [
+                        registro.txt_id
+                      ];
+      // callback
+      db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+          var response = { status: 500, message: "Ha ocurrido un error con la base de datos.", result: null };
+          res.status(500).json(response);
+        } else {
+          if (result.rows.length > 0) {
+              var response = { status: 200, message: "Registro eliminado con exito!.", result: result.rows[0] };
+              res.status(200).json(response);
+          }else{
+            req.session.autenticado = false;
+            var response = { status: 401, message: "Usuario no autorizado.", result: null };
+            res.status(401).json(response);
+          }
+        }
+      });
+    }else{
+      var response = { status: 403, message: "Ha ocurrido un error con el envío de la información.", result: null };
+      res.status(403).json(response);
+    }
+  } else {
+      var response = { status: 200, message: "El usuario esta autenticado, favor deslogearse.", result: null };
+      res.status(200).json(response);
+  }
+});
 module.exports = router;
