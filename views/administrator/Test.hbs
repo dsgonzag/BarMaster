@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>BAR ESCOLAR - ADMINISTRADOR</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css"  >
+  <link rel="stylesheet" href="../js/DataTables/media/css/DT_bootstrap.css" />
+</head>
+<!--Logo-->
+<audio src="../audio/intro.mp3" autoplay type="audio/mpeg"></audio>
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="col-md-5" style="margin-left: 8%;">
+        <p>User: {{username}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>
+          <a href="/administrator/">Usuarios </a>
+          <a href="/administrator/test">Test </a>
+          <a href="/administrator/alimentos">Alimentos </a>
+          <a href="/administrator/logout">Cerrar sesión</a>
+        </p>
+      </div>
+    </div>
+  </nav>
+</header>
+<body id="imgFondo">
+  <div class="row" style="margin-top: 10%">
+    <div class="col-md-8" style="margin-left: 15%">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-md-12 space20">
+                  
+                  <a data-toggle="modal" class="btn btn-dark" role="button" href="#myModal1" onClick="limpiar_form();"><i class="clip-user-5"></i>
+                      Registrar
+                  </a>
+              </div>
+          </div>
+
+          <!-- start: Modal -->
+          <div class="modal fade" id="myModal1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                  <div class="modal-content" style="padding: 20px">
+                      <!-- start: PAGE CONTENT -->
+                      <div class="row">
+                          <div class="col-md-12">
+                              <!-- start: FORM VALIDATION 1 PANEL -->
+                              <div class="panel panel-default">
+                                  <div class="panel-body">
+                                      <h2><i class="fa fa-pencil-square teal"></i> Registro </h2>
+
+                                      <hr>
+                                      <form role="form" id="form" method="post">
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="errorHandler alert alert-danger no-display" style="display: none">
+                                                      <div id="mensaje_error">Ud tiene algunos errores de ingreso. Por Favor verificar.</div>
+                                                  </div>
+                                                  <div class="successHandler alert alert-success no-display" style="display: none">
+                                                      <div id="mensaje_correcto">Formulario Validado con Éxito!!</div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <div class="row">
+                                                      <div class="col-md-8">
+                                                          <div class="form-group">
+                                                              <input type="hidden" class="form-control" id="txt_id" name="txt_id" readonly>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label">
+                                                          Descripción: <span class="symbol required"></span>
+                                                      </label>
+                                                      <input type="text" class="form-control" id="txt_descripcion" name="txt_descripcion">
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                                  <hr>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                                  <button type="button" class="btn btn-default" onclick="limpiar_form();">
+                                                      <i class='fa fa-file-o'></i> Nuevo
+                                                  </button>
+                                                  <button class="btn btn-default" type="submit">
+                                                      <i class="fa fa-save"></i> Guardar
+                                                  </button>
+                                                  <button type="button" class="btn btn-orange remove-event no-display" onclick="remove_form();">
+                                                      <i class='fa fa-trash-o'></i> Eliminar
+                                                  </button>
+                                                  <button aria-hidden="true" data-dismiss="modal" class="btn btn-default">
+                                                      <i class="clip-close"></i> Cerrar
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                              <!-- end: FORM VALIDATION 1 PANEL -->
+                          </div>
+                      </div>
+                      <!-- end: PAGE CONTENT-->
+                  </div>
+              </div>
+          </div>
+          <!-- end: Modal -->
+
+          <div class="table-responsive" id="grid">
+            <table id="grid-1" class="table table-striped table-hover" style="width: 100%">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Id</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/overrideMessagesValidator.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/DataTables/media/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="../functions/Test/grids.js"></script>
+<script type="text/javascript" src="../functions/Test/funciones.js"></script>
+<script type="text/javascript" src="../functions/Test/validations.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        TableExport.init();
+        FormValidator.init();
+    });
+</script>
+</html>

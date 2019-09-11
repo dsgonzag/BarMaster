@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bar Escolar</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+  <script src = "https://code.jquery.com/jquery-1.7.2.min.js" ></script>
+  <script src="https://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<audio src="audio/juego.mp4" autoplay type="audio/mpeg"></audio>
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="col-md-5" style="margin-left: 8%;">
+          <p>User: {{username}}</p>
+        </div>
+        <div class="col-md-2">
+          <p><a href="/logout">Cerrar sesión</a></p>
+        </div>
+    </div>
+  </nav>
+</header>
+<body id="imgFondo">
+  <div class="container">
+    <img class="mx-auto d-block" width="50%" src="imagenes/tituloBarEscolar.png" id="tituloBarEscolar">
+    <div class="grup contenedor">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="thumbnail">
+            <div class="caption">
+              <p style="font-family: cursive; font-weight: bolder">BAR ESCOLAR</p>
+            </div>
+            <div class="grup img2"  id="bar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grup contenedor posision">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <p style="font-family: cursive; font-weight: bolder">CONSTRUCTORES</p>
+            </div>
+            <div class="grup img2"  id="contructores">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <p style="font-family: cursive; font-weight: bolder">ENERGETICOS</p>
+            </div>
+            <div class="grup img3"  id="energeticos">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <p style="font-family: cursive; font-weight: bolder">REGULADORES</p>
+            </div>
+            <div class="grup img4"  id="reguladores">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption ">
+              <p style="font-family: cursive; font-weight: bolder">CHATARRA</p>
+            </div>
+            <div class="grup img1" id="dañinos">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <input type="hidden" id="puntajeNivel1" value="{{puntosNivel1}}" />
+      <button type="button" class="" > Puntaje:  <span class="puntaje">0</span><span ></span></button>
+      <button type="button" class="" id="descarga" style="display:none;"> Descargar </button>
+    </div>
+  </div>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script type="text/javascript" src="script/main2.js"></script>
+</body>
+</html>

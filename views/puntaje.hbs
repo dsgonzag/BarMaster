@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<style>
+.stilo{
+  outline: none;
+  font-weight: bold;
+  align-content: center;
+  display: block;
+  font-size: 40px
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Puntaje</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+  <script src = "https://code.jquery.com/jquery-1.7.2.min.js" ></script>
+  <script src="https://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <center>
+          <div class="navbar-header">
+            <a href="/"><img class="mx-auto d-block" id="logo" src="img/logo.png" alt="Logo"> </a>
+          </div>
+        </center>
+        <div class="col-md-2">
+          <p><a href="/logout">Cerrar sesión</a></p>
+        </div>
+    </div>
+  </nav>
+</header>
+<audio src="../audio/ganador.mp3" autoplay type="audio/mpeg"></audio>
+<body>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-center">
+        <a class="stilo" style="font-family: cursive; font-weight: bolder">
+          Ganaste! {{username}}, tu Puntaje es:  <span id="puntaje">{{puntaje}}</span><span ></span>
+        </a>
+      </p>
+      <br>
+      <br>
+    </div>
+  </div>
+  <audio src="audio/muybien.mp3" autoplay type="audio/mpeg"></audio>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="text-align: center" >
+        <a href="Bar.html">
+          <img class="mx-auto d-block" width="20%"  src="imagenes/premioo.png" ></a>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

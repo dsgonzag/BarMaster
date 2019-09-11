@@ -1,0 +1,52 @@
+
+  #imgFondo{
+   
+    background-image: url(../img/fondo.png);
+    background-position: center center;
+    
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: beige ;
+}
+#logo{
+    width: 120px;
+    height: 100px;
+ 
+
+    }
+    #tituloIniciar{
+        position:relative;
+       
+        }
+        #btnIniciar {
+            position:relative;
+            top:1em;
+            display:block; 
+            } 
+        #tituloInstrucciones {
+            position:relative;
+           
+          
+          
+            
+       }
+       #video {
+        position:relative;
+        top:2em;
+        width:800px;
+        height:400px;
+        display:block; 
+           }
+    
+       #btnJugar{
+        position:relative;
+        top:4em;
+        display:block; 
+       }
+       #tituloBarEscolar{
+        position:relative;
+        top:110px;
+        width:700px;
+        height:150px;
+       }
+       

@@ -1,0 +1,113 @@
+[
+    {
+  "mombre": "cake",
+  "rutaImg":"img/cake.png",
+  "id": "1",
+  "puntaje": "5",
+  "categoria": "energeticos",
+  "sonido": "audio/cake.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+         ,"seccion":"miprimerdiv"
+},
+    {
+    "mombre": "leche",
+   "rutaImg":"img/leche.png",
+  "id": "2",
+  "puntaje": "5",
+  "categoria": "constructores",
+  "sonido": "audio/leche.mp4",
+  "valorNutricional":"20%",
+  "calorias":"100"
+  ,"seccion":"miprimerdiv"
+    },
+    {
+    "mombre": "cola",
+    "rutaImg":"img/cola.png",
+  "id": "3",
+  "puntaje": "-2",
+  "categoria": "chatarra",
+  "sonido": "audio/cola.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+  ,"seccion":"miprimerdiv"
+    }, 
+    {
+    "mombre": "guineo",
+    "rutaImg":"img/guineo.png",
+  "id": "4",
+  "puntaje": "5",
+  "categoria": "reguladores",
+  "sonido": "audio/guineo.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+  ,"seccion":"miprimerdiv"
+    },
+        {
+    "mombre": "tostada",
+    "rutaImg":"img/tostada.png",
+  "id": "5",
+  "puntaje": 5,
+  "categoria": "energeticos",
+  "sonido": "audio/tostada.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+   ,"seccion":"miprimerdiv"
+
+    },
+        {
+    "mombre": "yogurt",
+    "rutaImg":"img/yogurt.png",
+  "id": "6",
+  "puntaje": 5,
+  "categoria": "constructores",
+  "sonido": "audio/yogurt.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+ ,"seccion":"misegundodiv"
+    },
+         {
+  "mombre": "sandia",
+  "rutaImg":"img/sandia.png",
+  "id": "7",
+  "puntaje": "5",
+  "categoria": "reguladores",
+  "sonido": "audio/sandia.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+              ,"seccion":"misegundodiv"
+},      
+        {
+    "mombre": "hotdog",
+    "rutaImg":"img/hotdog.png",
+  "id": "8",
+  "puntaje": -2,
+  "categoria": "chatarra",
+  "sonido": "audio/hotdog.mp4",
+  "valorNutricional":"0%",
+  "calorias":"20"
+  ,"seccion":"misegundodiv"
+    },
+        {
+    "mombre": "manzana",
+    "rutaImg":"img/manzana.png",
+  "id": "9",
+  "puntaje": 5,
+  "categoria": "reguladores",
+  "sonido": "audio/manzana.mp4",
+  "valorNutricional":"30%",
+  "calorias":"20"
+  ,"seccion":"misegundodiv"
+    },
+        {
+    "mombre": "agua",
+    "rutaImg":"img/agua.png",
+  "id": "10",
+  "puntaje": 5,
+  "categoria": "constructores",
+  "sonido": "audio/agua.mp4",
+  "valorNutricional":"20%",
+  "calorias":"20"
+  ,"seccion":"misegundodiv"
+    }
+ ]

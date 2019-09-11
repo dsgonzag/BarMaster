@@ -1,0 +1,171 @@
+#imgFondo{
+   
+    background-image: url(../img/fondo.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: beige ;
+}
+#logo{
+    width: 120px;
+    height: 100px;
+ 
+
+    }
+body{
+    margin:0;
+    padding: 0; 
+}
+.fondo{
+    background-image: url('../imagenes/fondo.jpg');
+    width: 100%;
+    height:  100vh;
+    background-size: cover ;
+    background-position: center;
+    position: absolute;
+}
+                             /*--------------------------productos---------------------*/
+.grup {
+  margin: 1%;
+  height:  350px;
+}
+.grup p{
+text-align: center;
+
+tab-size: 10px;
+}
+.grup img { 
+height:100px;
+}
+
+.contenedor {
+  
+/*  background-color: rgb(37,176 , 144);*/
+height: auto;
+    
+}
+  .img1 {
+/*    Chatarra*/
+
+background: #FFFFFF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #b29f94, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #b29f94, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    
+     
+  }
+  .img2 {
+
+/*      Constructores*/
+
+background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+
+  }
+  .img4 {
+/*    Reguladores */
+background: #A1FFCE;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #FFFFFF, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #FFFFFF, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  }
+  .img3 {
+  
+/*    Energeticos*/
+background: #fffc00;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #ffffff, #fffc00);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #ffffff, #fffc00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+  }
+  .posision {
+   
+    height:  200px;
+  }
+                                   /*------------------------Lonchera-------------*/
+  .lonchera{
+    
+    background-image: url('../imagenes/lonchera.png');
+    width:50%;
+    height:  100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position:absolute;
+    display: block;
+    
+}
+.cc2{
+  /*border: 6px solid rgb(156, 58, 58);*/
+  height : 60px;
+   margin-top : 2% ;  
+  width:100%;
+   
+    
+}
+.cc2 img{
+
+margin-top :40% ;
+height: 200px;
+margin-left: 20%;
+}
+.cc{
+
+  height : 80px;
+  width:120%;
+  margin-top :40% ;
+    margin-left: 20%;
+}
+.cc3{
+height : 100px;
+  width:100%;
+  margin-top :35% ;
+    margin-left: 20%;
+  
+}
+
+.lonchera img{
+
+  height: 70px;
+  background-position: center;
+}
+.lonchCont{
+margin-left: 2px;
+    
+     position: relative;
+}
+.cont1{  }
+.cont2{  }
+.cont3{  }
+/*--------------------boton puntaje-----------------*/
+button{
+    outline: none;
+  font-size: 200%;
+  font-family: 'courier';
+  
+  font-weight: bold;
+  margin-top: 18%;
+    
+/*  border-radius: 20px;*/
+  position: relative;
+ margin-left: 25px;
+  border: 3px solid 37,176 , 144;
+font-family: cursive; 
+	font-weight: bolder
+}
+
+
+
+
+

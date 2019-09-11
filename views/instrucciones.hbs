@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>BAR ESCOLAR</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link href="/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<!--Logo-->
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="col-md-5" style="margin-left: 8%;">
+          <p>User: {{username}}</p>
+        </div>
+        <div class="col-md-2">
+          <p><a href="/logout">Cerrar sesión</a></p>
+        </div>
+    </div>
+  </nav>
+</header>
+<body id="imgFondo">
+  <!-- sección de intro-->
+  <section id="seccionIntrucciones">
+    <br>
+    <br>
+    <center>
+      <img class="mx-auto d-block" width="80%" src="img/tituloInstrucciones2.png" id="tituloInstrucciones">
+      <iframe id="video"class="embed-responsive-item" src="https://www.youtube.com/embed/T0W5fhw9lYk" allowfullscreen></iframe>
+    </center>
+    <a href="/bar"><img class="mx-auto d-block" width="25%"  src="img/jugar.png" id="btnJugar"></a>
+  </section>
+</body>
+</html>
