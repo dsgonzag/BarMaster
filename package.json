@@ -5,11 +5,10 @@
 "engines":{
 "node":"10.16.3"
 },
-  "scripts": {
-    "dev": "nodemon ./bin/www",
-    "start": "node app.js"
-  },
-  "dependencies": {
+  "scripts":{
+"start": "node ./bin/www"
+   },
+ "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
