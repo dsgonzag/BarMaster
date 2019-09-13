@@ -617,13 +617,13 @@ router.post('/puntajes/insert', function(req, res, next) {
       var values = [];
 
      
-        text = "select * from func_insert_puntajes($1, $2, $3, $4, $5);"
+        text = "select * from func_insert_puntajes($1, $2, $3, $4);"
         values = [
-                        registro.txt_nombre,
-                        registro.txt_puntos,
-                        registro.txt_sonido,
-                        registro.txt_categoria,
-                        registro.txt_imagen,
+                        registro.txt_fecha,
+                        registro.txt_puntaje,
+                        registro.txt_nivel,
+                        registro.txt_id_usuario,
+                       
                       ];
   
       
@@ -649,13 +649,12 @@ router.post('/puntajes/update', function(req, res, next) {
       var text = "";
       var values = [];
 
-        text = "select * from func_update_puntajes($1, $2, $3, $4, $5, $6);"
+        text = "select * from func_update_puntajes($1, $2, $3, $4, $5);"
         values = [
-                        registro.txt_nombre,
-                        registro.txt_puntos,
-                        registro.txt_sonido,
-                        registro.txt_categoria,
-                        registro.txt_imagen,
+                        registro.txt_fecha,
+                        registro.txt_puntaje,
+                        registro.txt_nivel,
+                        registro.txt_id_usuario,
                         registro.txt_id
                       ];
       

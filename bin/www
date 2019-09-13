@@ -20,7 +20,7 @@ app.set('port', port);
  * Create HTTP server.
  */
  var server;
- const connectionString = 'postgresql://postgres:root@localhost:5432/dfjcrcp9deu59j'
+ const connectionString = 'postgresql://postgres:root@localhost:5432/db_bar'
 
  const client = new Client({
    connectionString: connectionString,

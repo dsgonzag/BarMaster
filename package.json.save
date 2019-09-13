@@ -2,8 +2,11 @@
   "name": "barmaster",
   "version": "0.0.0",
   "private": true,
+""
+},
   "scripts": {
-    "start": "node ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "start": "node app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,5 +18,18 @@
     "moment": "^2.24.0",
     "morgan": "~1.9.1",
     "pg": "^7.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsgonzag/BarMaster.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
+
 }
