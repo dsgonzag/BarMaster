@@ -34,7 +34,7 @@ $(document).ready(function() {
 
       imagenes.push(newElement)
       tagImagenes.push(img)
-
+console.log(imagenes);
     });
 
     for (let i=0;i<tagImagenes.length;i++){

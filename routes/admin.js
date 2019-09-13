@@ -498,22 +498,20 @@ router.post('/alimentos/store', function(req, res, next) {
 
       if(registro.txt_id==""){
         text = "select * from func_insert_alimento($1, $2, $3, $4, $5, $6);"
-        values = [
+        values = [      registro.txt_categoria,
                         registro.txt_nombre,
                         registro.txt_puntos,
                         registro.txt_sonido,
-                        registro.txt_categoria,
                         registro.txt_imagen,
                         registro.txt_fechaelaboracion
                       ];
       }else{
         
         text = "select * from func_update_alimento($1, $2, $3, $4, $5, $6, $7);"
-        values = [
+        values = [      registro.txt_categoria,
                         registro.txt_nombre,
                         registro.txt_puntos,
                         registro.txt_sonido,
-                        registro.txt_categoria,
                         registro.txt_imagen,
                         registro.txt_fechaelaboracion,
                         registro.txt_id

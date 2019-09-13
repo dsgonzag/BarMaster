@@ -16,9 +16,7 @@ var FormValidator = function () {
             },
             ignore: "",
             rules: {
-                txt_categoria: {
-                    required: true
-                },
+               
                 txt_nombre: {
                     required: true
                 },

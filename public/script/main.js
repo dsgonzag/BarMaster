@@ -26,6 +26,7 @@ $(document).ready(function() {
 
       imagenes.push(newElement)
       tagImagenes.push(img)
+      console.log(imagenes);
 
     });
 
@@ -200,7 +201,8 @@ $(document).ready(function() {
             $('#descarga').hide( "slow");
             puntajeJuego -= element.puntos;
             $(".puntaje").text(puntajeJuego.toString())
-            guarda_puntaje(element.puntos);
+            //guarda_puntaje(element.puntos);
+            guarda_puntaje(puntajeJuego);
             contadorLonchera--;
           }});
           return

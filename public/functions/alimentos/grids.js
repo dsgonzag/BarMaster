@@ -18,7 +18,7 @@ var oTable = $('#grid-1').DataTable(
 
                     },
                     { "data": "id" },
-                    { "data": "categoria" },
+                    
                     { "data": "name" },
                     { "data": "puntos" }
                     ,{"data": "fechaelaboracion"}

@@ -485,13 +485,11 @@ router.post('/categorias/insert', function(req, res, next) {
       var values = [];
 
      
-        text = "select * from func_insert_categorias($1, $2, $3, $4, $5);"
+        text = "select * from func_insert_categorias($1, $2);"
         values = [
-                        registro.txt_nombre,
-                        registro.txt_puntos,
-                        registro.txt_sonido,
-                        registro.txt_categoria,
-                        registro.txt_imagen,
+                        registro.txt_descripcion,
+                        registro.txt_fechacreacion,
+                       
                       ];
   
       
@@ -517,13 +515,10 @@ router.post('/categorias/update', function(req, res, next) {
       var text = "";
       var values = [];
 
-        text = "select * from func_update_categorias($1, $2, $3, $4, $5, $6);"
+        text = "select * from func_update_categorias($1, $2, $3);"
         values = [
-                        registro.txt_nombre,
-                        registro.txt_puntos,
-                        registro.txt_sonido,
-                        registro.txt_categoria,
-                        registro.txt_imagen,
+                        registro.txt_descripcion,
+                        registro.txt_fechacreacion,
                         registro.txt_id
                       ];
       
